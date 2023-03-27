@@ -6,7 +6,7 @@ import { ProSidebarProvider } from 'react-pro-sidebar';
 import Dashboard from './scenes/dashboard';
 import Topbar from '../src/scenes/global/Topbar';
 import Sidebar from '../src/scenes/global/Sidebar';
-// import Team from '../src/scenes/team';
+import Team from '../src/scenes/team';
 // import Invoices from '../src/scenes/invoices';
 // import Contacts from '../src/scenes/contacts';
 // import Bar from '../src/scenes/bar';
@@ -31,7 +31,7 @@ function App() {
               <Topbar />
               <Routes>
                 <Route path="/" element={<Dashboard />} />
-                {/* <Route path="/team" element={<Team />} /> */}
+                <Route path="/team" element={<Team />} />
                 {/* <Route path="/contacts" element={<Contacts />} /> */}
                 {/* <Route path="/invoices" element={<Invoices />} /> */}
                 {/* <Route path="/form" element={<Form />} /> */}
