@@ -60,7 +60,7 @@ const Team = () => {
             }
             borderRadius="4px"
           >
-            {access === 'Admin' && <AdminPanelSettingsOutlined />}
+            {access === 'admin' && <AdminPanelSettingsOutlined />}
             {access === 'manager' && <SecurityOutlined />}
             {access === 'user' && <LockOpenOutlined />}
             <Typography color={colors.grey[100]} sx={{ ml: '5px' }}>
