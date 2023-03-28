@@ -1,19 +1,30 @@
 import { Box, Typography, useTheme } from '@mui/material';
-import { DataGrid } from '@mui/x-data-grid';
-import { tokens } from '../../theme';
-import { mockDataTeam } from '../../data/mockData';
 import {
-  AdminPanelSettingsOutlined,
-  LockOpenOutlined,
-  SecurityOutlined,
-} from '@mui/icons-material';
+  DataGrid,
+  GridToolbarContainer,
+  GridToolbarColumnsButton,
+  GridToolbarFilterButton,
+  GridToolbarDensitySelector,
+  GridToolbarExport,
+} from '@mui/x-data-grid';
+import { tokens } from '../../theme';
+import { mockDataInvoices } from '../../data/mockData';
 
 import Header from '../../components/Header';
 import { number } from 'yup';
 
-const Team = () => {
+const Contacts = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+
+  const CustomToolbar = () => (
+    <GridToolbarContainer>
+      <GridToolbarColumnsButton />
+      <GridToolbarFilterButton />
+      <GridToolbarDensitySelector />
+      <GridToolbarExport />
+    </GridToolbarContainer>
+  );
 
   const columns = [
     { field: 'id', headerName: 'ID' },
@@ -22,13 +33,6 @@ const Team = () => {
       headerName: 'Name',
       flex: 1,
       cellClassName: 'name-column--cell',
-    },
-    {
-      field: 'age',
-      headerName: 'Age',
-      type: number,
-      headerAlign: 'left',
-      align: 'left',
     },
 
     {
@@ -42,40 +46,25 @@ const Team = () => {
       flex: 1,
     },
     {
-      field: 'access',
-      headerName: 'Access Level',
+      field: 'cost',
+      headerName: 'Cost',
       flex: 1,
-      renderCell: ({ row: { access } }) => {
-        return (
-          <Box
-            width="60%"
-            m="0 auto"
-            p="5px"
-            display="flex"
-            justifyContent="center"
-            sx={{
-              backgroundColor:
-                access === 'admin'
-                  ? colors.greenAccent[600]
-                  : colors.greenAccent[700],
-            }}
-            borderRadius="4px"
-          >
-            {access === 'admin' && <AdminPanelSettingsOutlined />}
-            {access === 'manager' && <SecurityOutlined />}
-            {access === 'user' && <LockOpenOutlined />}
-            <Typography color={colors.grey[100]} sx={{ ml: '5px' }}>
-              {access}
-            </Typography>
-          </Box>
-        );
-      },
+      renderCell: (params) => (
+        <Typography color={colors.greenAccent[500]}>
+          ${params.row.cost}
+        </Typography>
+      ),
+    },
+    {
+      field: 'date',
+      headerName: 'Date',
+      flex: 1,
     },
   ];
 
   return (
     <Box m="20px">
-      <Header title="TEAM" subtitle="Managing the Team Members" />
+      <Header title="INVOICES" subtitle="List of Invoice Balances" />
       <Box
         m="40px 0 0 0"
         height="75vh"
@@ -100,12 +89,23 @@ const Team = () => {
             borderTop: 'none',
             backgroundColor: colors.blueAccent[700],
           },
+          '& .MuiCheckbox-root': {
+            color: `${colors.greenAccent[200]} !important`,
+          },
+          '& .MuiDataGrid-toolbarContainer .MuiButton-text': {
+            color: `${colors.grey[100]} !important`,
+          },
         }}
       >
-        <DataGrid rows={mockDataTeam} columns={columns} />
+        <DataGrid
+          checkboxSelection
+          rows={mockDataInvoices}
+          columns={columns}
+          //   slots={{ toolbar: CustomToolbar }}
+        />
       </Box>
     </Box>
   );
 };
 
-export default Team;
+export default Contacts;

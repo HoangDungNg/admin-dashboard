@@ -7,10 +7,10 @@ import Dashboard from './scenes/dashboard';
 import Topbar from '../src/scenes/global/Topbar';
 import Sidebar from '../src/scenes/global/Sidebar';
 import Team from '../src/scenes/team';
-// import Invoices from '../src/scenes/invoices';
-// import Contacts from '../src/scenes/contacts';
+import Invoices from '../src/scenes/invoices';
+import Contacts from '../src/scenes/contacts';
 // import Bar from '../src/scenes/bar';
-// import Form from '../src/scenes/form';
+import Form from '../src/scenes/form';
 // import Line from '../src/scenes/line';
 // import Pie from '../src/scenes/pie';
 // import Faq from '../src/scenes/faq';
@@ -32,9 +32,9 @@ function App() {
               <Routes>
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/team" element={<Team />} />
-                {/* <Route path="/contacts" element={<Contacts />} /> */}
-                {/* <Route path="/invoices" element={<Invoices />} /> */}
-                {/* <Route path="/form" element={<Form />} /> */}
+                <Route path="/contacts" element={<Contacts />} />
+                <Route path="/invoices" element={<Invoices />} />
+                <Route path="/form" element={<Form />} />
                 {/* <Route path="/bar" element={<Bar />} /> */}
                 {/* <Route path="/pie" element={<Pie />} /> */}
                 {/* <Route path="/line" element={<Line />} /> */}
